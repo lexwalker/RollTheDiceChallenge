@@ -12,8 +12,19 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
     }
+
+    private void OnMouseOver(PolygonCollider2D collider)
+    { 
+            if (collider.tag == "Ground")
+            {
+
+                collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 155);
+            }
+    }
+    
+
 }
