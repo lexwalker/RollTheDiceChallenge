@@ -20,6 +20,6 @@ public class GameManagerScript : MonoBehaviour
     private void SpawnPlayer()
     {
         SpawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
-        Player.transform.position = SpawnPoint + new Vector3(0, .4f, 0);
+        Player.transform.position = SpawnPoint;
     }
 }

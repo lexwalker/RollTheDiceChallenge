@@ -10,7 +10,6 @@ public class GridGenerator : MonoBehaviour
     private int playerCount = 1;
     private int treasuresCount = 5;
     private int eventCount = 10;
-    private float tileSize = 1.03f;
 
     // Start is called before the first frame update
 
@@ -30,23 +29,22 @@ public class GridGenerator : MonoBehaviour
                 GameObject currentTile = tiles[randomValue];
                 tiles.Remove(tiles[randomValue]);
 
-                GameObject newTile = Instantiate(currentTile, transform);
+                float posX = 0.5f * x - 0.5f * y;
+                float posY = -0.25f * x - 0.25f * y;
 
-                float posX = (x * tileSize + y * tileSize) / 2f;
-                float posY = (x * tileSize - y * tileSize) / 4f;
+                GameObject newTile = Instantiate(currentTile, new Vector2(posX, posY), transform.rotation);
 
-                newTile.transform.position = new Vector2(posX, posY);
-                newTile.name = x + " , " + y;
+                newTile.name = "Tile";
             }
         }
         
     }
 
-    private void CreateTilesTable()
+    private void CreateTilesTable() 
     {
         tiles.Add(Resources.Load<GameObject>("Prefabs/GridPrefabs/PlayerSpawnCell"));
-
         for (int treasuresCounter = 0; treasuresCounter < treasuresCount; treasuresCounter++)
+
         {
             tiles.Add(Resources.Load<GameObject>("Prefabs/GridPrefabs/TreasureCell"));
         }

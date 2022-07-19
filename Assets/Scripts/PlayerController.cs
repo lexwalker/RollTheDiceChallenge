@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D Player;
+    private TileLogic tiles;
+    private GameObject Player;
+    private PolygonCollider2D collider;
+    private SpriteRenderer spriteRenderer;
+    public Sprite spriteUnselected;
+    public Sprite spriteSelected;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GetComponent<Rigidbody2D>();   
+        tiles = GameObject.Find("Tile").GetComponent<TileLogic>();
+        Player = GetComponent<GameObject>();
     }
 
     // Update is called once per frame
@@ -17,13 +23,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnMouseOver(PolygonCollider2D collider)
-    { 
-            if (collider.tag == "Ground")
-            {
-
-                collider.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 155);
-            }
+    private void OnMouseOver()
+    {
+        Debug.Log(gameObject.transform.position);
     }
     
 
