@@ -29,8 +29,8 @@ public class GridGenerator : MonoBehaviour
                 GameObject currentTile = tiles[randomValue];
                 tiles.Remove(tiles[randomValue]);
 
-                float posX = 0.5f * x - 0.5f * y;
-                float posY = -0.25f * x - 0.25f * y;
+                float posX = x;
+                float posY = y;
 
                 GameObject newTile = Instantiate(currentTile, new Vector2(posX, posY), transform.rotation);
 

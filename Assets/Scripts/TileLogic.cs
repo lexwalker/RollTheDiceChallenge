@@ -5,6 +5,7 @@ using UnityEngine;
 public class TileLogic : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
+    GameObject Player;
     public PolygonCollider2D collider;
     public Vector2 tilePosition;
     private Sprite tileUnselected;
@@ -13,6 +14,7 @@ public class TileLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = GameObject.Find("Player");
         collider = gameObject.GetComponent<PolygonCollider2D>();
         tilePosition = gameObject.transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,11 +23,10 @@ public class TileLogic : MonoBehaviour
 
     private void OnMouseOver()
     {
-            spriteRenderer.sprite = tileSelected;
-            if (Input.GetMouseButtonDown(0))
+            if (Vector2.Distance(Player.transform.position, gameObject.transform.position) < 1.5f)
             {
-                Debug.Log(tilePosition);
-            }
+                spriteRenderer.sprite = tileSelected;
+            }    
     }
 
     private void OnMouseExit()

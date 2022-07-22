@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tiles = GameObject.Find("Tile").GetComponent<TileLogic>();
         Player = GetComponent<GameObject>();
     }
 
@@ -25,8 +24,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Debug.Log(gameObject.transform.position);
+        if (Input.GetMouseButtonDown(0) && Vector2.Distance(Player.transform.position, gameObject.transform.position) < 1.5f)
+        {
+            Debug.Log(111);
+            transform.position = gameObject.transform.position;
+        }
     }
-    
+
 
 }
